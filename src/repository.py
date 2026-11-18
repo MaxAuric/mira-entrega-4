@@ -57,9 +57,36 @@ ORGANIZACIONES_UMBRALES: Dict[str, ConfiguracionUmbrales] = {
 
 def obtener_umbrales_organizacion(org_id: str) -> ConfiguracionUmbrales:
     """Devuelve la configuración vigente de umbrales para una organización cliente."""
-    if org_id not in ORGANIZACIONES_UMBRALES:
+    if org_id not in ORGANIZACIONES_UMBRALES:  # AC-5
         raise KeyError(f"La organización '{org_id}' no existe en MIRA.")
-    return ORGANIZACIONES_UMBRALES[org_id]
+    return ORGANIZACIONES_UMBRALES[org_id]  # AC-5
+
+
+def actualizar_umbrales_organizacion(
+    org_id: str,
+    umbral_aprobacion: float,
+    umbral_rechazo: float,
+    autor: str = "admin_cliente",
+) -> ConfiguracionUmbrales:
+    """Actualiza los umbrales propios de una organización cliente e incrementa su versión."""
+    actual = obtener_umbrales_organizacion(org_id)  # AC-5
+
+    if not (0.0 <= umbral_aprobacion <= 100.0) or not (0.0 <= umbral_rechazo <= 100.0):
+        raise ValueError("Los umbrales deben estar dentro del rango [0.0, 100.0].")
+
+    if umbral_rechazo > umbral_aprobacion:
+        raise ValueError("El umbral de rechazo debe ser estrictamente menor al umbral de aprobación.")
+
+    nueva_cfg = ConfiguracionUmbrales(
+        org_id=actual.org_id,
+        nombre_org=actual.nombre_org,
+        umbral_aprobacion=round(float(umbral_aprobacion), 2),
+        umbral_rechazo=round(float(umbral_rechazo), 2),
+        version=actual.version + 1,
+        autor_ultimo_cambio=autor.strip() or "admin_cliente",
+    )
+    ORGANIZACIONES_UMBRALES[org_id] = nueva_cfg
+    return nueva_cfg
 
 
 def reiniciar_repositorio_base() -> None:

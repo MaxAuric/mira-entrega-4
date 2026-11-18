@@ -1,6 +1,6 @@
 """Modelos de dominio base de MIRA (CAT-SEN v3 y POL-DEC v2)."""
 
-from typing import Dict, List, Optional
+from typing import Dict, List
 from pydantic import BaseModel, Field
 
 
@@ -23,6 +23,14 @@ class ConfiguracionUmbrales(BaseModel):
     )
     version: int = Field(default=1, ge=1, description="Versión de la configuración de umbrales")
     autor_ultimo_cambio: str = Field(default="sistema_inicial")
+
+
+class ActualizacionUmbralesInput(BaseModel):
+    """Datos de entrada para actualizar los umbrales propios de una organización cliente."""
+
+    umbral_aprobacion: float = Field(..., description="Nuevo umbral de aprobación (0 a 100)")
+    umbral_rechazo: float = Field(..., description="Nuevo umbral de rechazo (0 a 100)")
+    autor: str = Field(default="admin_cliente", description="Usuario que realiza la modificación")
 
 
 class CasoEntrada(BaseModel):
