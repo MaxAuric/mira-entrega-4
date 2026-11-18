@@ -1,0 +1,27 @@
+# Material de clases e instrucciones locales (no se sube al repositorio entregable)
+Material/
+
+# Entornos virtuales y dependencias
+.venv/
+venv/
+env/
+node_modules/
+
+# Archivos compilados y cachés de Python / Pytest
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Variables de entorno y secretos (Regla de seguridad: nunca subir credenciales)
+.env
+*.env
+!.env.example
+
+# Archivos del sistema operativo y editores
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
