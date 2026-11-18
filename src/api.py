@@ -39,9 +39,9 @@ def consultar_umbrales(org_id: str) -> dict:
 
 @app.put("/api/organizaciones/{org_id}/umbrales")
 def actualizar_umbrales_endpoint(org_id: str, payload: ActualizacionUmbralesInput) -> dict:
-    """Actualiza los umbrales propios de una organización cliente con validación de invariantes."""
+    """Actualiza los umbrales propios de una organización cliente con validación de invariantes (# AC-6)."""
     try:
-        actualizado = actualizar_umbrales_organizacion(
+        actualizado = actualizar_umbrales_organizacion(  # AC-6
             org_id=org_id,
             umbral_aprobacion=payload.umbral_aprobacion,
             umbral_rechazo=payload.umbral_rechazo,

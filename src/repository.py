@@ -68,13 +68,13 @@ def actualizar_umbrales_organizacion(
     umbral_rechazo: float,
     autor: str = "admin_cliente",
 ) -> ConfiguracionUmbrales:
-    """Actualiza los umbrales propios de una organización cliente e incrementa su versión."""
+    """Actualiza los umbrales propios de una organización cliente e incrementa su versión (# AC-6)."""
     actual = obtener_umbrales_organizacion(org_id)  # AC-5
 
-    if not (0.0 <= umbral_aprobacion <= 100.0) or not (0.0 <= umbral_rechazo <= 100.0):
+    if not (0.0 <= umbral_aprobacion <= 100.0) or not (0.0 <= umbral_rechazo <= 100.0):  # AC-6
         raise ValueError("Los umbrales deben estar dentro del rango [0.0, 100.0].")
 
-    if umbral_rechazo > umbral_aprobacion:
+    if umbral_rechazo >= umbral_aprobacion:  # AC-6
         raise ValueError("El umbral de rechazo debe ser estrictamente menor al umbral de aprobación.")
 
     nueva_cfg = ConfiguracionUmbrales(
@@ -82,7 +82,7 @@ def actualizar_umbrales_organizacion(
         nombre_org=actual.nombre_org,
         umbral_aprobacion=round(float(umbral_aprobacion), 2),
         umbral_rechazo=round(float(umbral_rechazo), 2),
-        version=actual.version + 1,
+        version=actual.version + 1,  # AC-6
         autor_ultimo_cambio=autor.strip() or "admin_cliente",
     )
     ORGANIZACIONES_UMBRALES[org_id] = nueva_cfg
