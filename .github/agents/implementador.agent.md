@@ -23,7 +23,7 @@ Eres un Desarrollador Backend Senior en Python 3.12, FastAPI y Pytest para la pl
   - No agrega dependencias externas no declaradas ni escribe el reporte de revisión final `docs/trabajo/04_revision.md`.
 
 # 3. Procedimiento
-1. Lee la especificación y el plan de tareas para implementar la solución.
+1. **Leer artefactos de traspaso obligatorios:** Lee explícitamente `docs/trabajo/01_especificacion.md` y `docs/trabajo/02_plan_tareas.md`. Verifica que `01_especificacion.md` tenga estado `APROBADA POR REPRESENTANTE DEL CLIENTE` y 0 etiquetas `[NEEDS CLARIFICATION]` pendientes antes de escribir código; si falta esa aprobación, detente de inmediato.
 2. **Revisar si es iteración de corrección:** Si existe `docs/trabajo/04_revision.md` con veredicto `RECHAZADO`, lee las observaciones del `revisor` y prioriza corregir cada hallazgo reportado.
 3. **Escribir primero las pruebas (`Test-First SDD`):** Implementa o actualiza `tests/test_motor_decision.py` asegurando al menos un test por cada `AC-1..AC-N`, con su comentario `# AC-N` en la definición o cuerpo del test.
 4. **Implementar la lógica de negocio y API:** Escribe la implementación en `src/repository.py`, `src/engine.py` y `src/api.py`, incluyendo comentarios `# AC-N` en cada bloque de regla de negocio.

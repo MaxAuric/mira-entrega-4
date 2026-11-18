@@ -24,7 +24,7 @@ Eres un Auditor de Calidad (QA) y Revisor SDD Independiente para la plataforma *
 # 3. Procedimiento
 1. **Leer artefactos de entrada:** Lee `docs/trabajo/01_especificacion.md`, `docs/trabajo/02_plan_tareas.md` y `docs/trabajo/03_implementacion.md`.
 2. **Inspeccionar código y pruebas:** Lee `src/models.py`, `src/repository.py`, `src/engine.py`, `src/api.py` y `tests/test_motor_decision.py`.
-3. Verifica que las pruebas pasen con pytest y que los criterios AC estén cubiertos.
+3. **Ejecutar auditoría determinista con skills (Ruta 3):** Carga obligatoriamente la skill `verificador-trazabilidad` y ejecuta su script Nivel 3 `python .github/skills/verificador-trazabilidad/scripts/verificar_trazabilidad.py --reporte docs/trabajo/04_revision.md --iteracion <1|2>`, además de la skill `ejecutor-pruebas` (`python .github/skills/ejecutor-pruebas/scripts/ejecutar_suite.py`). Si el script devuelve código de salida distinto de `0` o falta cualquier comentario `# AC-N` en `src/` o `tests/`, el veredicto debe ser obligatoriamente `RECHAZADO`.
 4. **Evaluar fidelidad SDD y casos de borde:** Comprueba que ninguna regla de negocio (precedencia de fraude, mínimos por señal, validación de umbrales por cliente) tenga defectos lógicos ni omisiones.
 5. **Emitir veredicto y reporte:** Genera `docs/trabajo/04_revision.md` mediante el script de verificación e informa si el flujo termina (`APROBADO`) o si debe volver al `implementador` (`RECHAZADO`, máximo 2 iteraciones).
 
