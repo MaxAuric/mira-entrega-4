@@ -10,8 +10,8 @@ Repositorio oficial del **Entregable 4** del proyecto **MIRA** (*Plataforma de I
 | :--- | :--- |
 | **Alternativa Elegida** | **Alternativa A · Desarrollo de Software Conducido por Especificación (SDD)** |
 | **Caso de Negocio** | Cálculo de puntaje de confianza ponderado, precedencia absoluta de señales de fraude, validación de mínimos individuales por señal y decisión por umbrales propios de cada organización cliente (`POL-DEC v2`, `CAT-SEN v3`, `DOC-MIRA v1.4`). |
-| **Herramienta y Versión** | Visual Studio Code v1.99+ con agentes personalizados (`.github/agents/*.agent.md`) y estándar abierto Agent Skills (`.github/skills/*/SKILL.md`). |
-| **Modelos Utilizados** | Google Gemini 3.5 Flash Lite (operación e iteración SDD, 500 RPD) y Gemini 3.5 Flash (revisión). |
+| **Herramienta y Versión** | GitHub Copilot en Visual Studio Code v1.99+ (conexión BYOK a Google AI Studio, agentes en `.github/agents/*.agent.md` y estándar Agent Skills en `.github/skills/*/SKILL.md`). |
+| **Modelos Utilizados** | Google `gemini-3.5-flash-lite` (modelo principal de trabajo, 500 RPD) y `gemini-3.5-flash` (reserva, 20 RPD). |
 | **Integrantes del Equipo** | **Max Latuz Zepeda** (Arquitectura Multiagente, Skills, Backend y Pruebas) <br/> **Joaquín Aguilera Arellano** (**Representante del Cliente** — rol rotado respecto a la Entrega 2 — y Frontend / Testing en Vivo) |
 | **Etiqueta Base para Demo en Vivo** | `entrega-3` (commit `33540ec`) |
 

@@ -81,7 +81,7 @@ Cada agente tiene un rol único sin superposición, un contrato de salida explí
 ## 3. Justificación del Patrón de Coordinación y Alternativa Descartada (Rúbrica I3)
 
 ### 3.1. Patrón Elegido: Secuencial con Traspaso Humano (*Handoffs*) + Cierre Evaluador-Optimizador
-Entre los seis patrones vistos en clases, diseñamos una **combinación justificada** de tres patrones complementarios que sigue la arquitectura **ICM (*Isolated Context per Milestone* / traspaso por archivos en `docs/trabajo/`)**:
+Entre los seis patrones vistos en clases, diseñamos una **combinación justificada** de tres patrones complementarios que sigue la arquitectura de contexto **ICM** vista en clases (*un agente a la vez: parte en limpio en cada etapa y las notas/archivos en `docs/trabajo/` llevan el trabajo*):
 1. **Patrón 1 · Secuencial (*Prompt Chaining*)** entre las etapas `especificador` $\rightarrow$ `planificador` $\rightarrow$ `implementador`:
    - *Por qué se ajusta al caso:* El flujo SDD (`Specify` $\rightarrow$ `Clarify` $\rightarrow$ `Plan` $\rightarrow$ `Tasks` $\rightarrow$ `Implement`) tiene una dependencia causal estricta: no se puede planificar la arquitectura sin una especificación cerrada, ni programar sin tareas trazadas a los criterios `AC-N`.
 2. **Patrón 6 · Traspaso con Humano en el Ciclo (*Handoffs con `send: false`*)** en los Puntos de Control Humano #1 y #2:
